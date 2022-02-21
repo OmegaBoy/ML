@@ -145,7 +145,7 @@ class MeanEmbeddingVectorizer(object):
 
 # %%
 df_train['clean_text_tok']=[nltk.word_tokenize(i) for i in df_train['clean_text']]
-model = Word2Vec(df_train['clean_text_tok'],min_count=1)     
+model = Word2Vec([[w.ljust(20) for w in word] for word in [words for words in df_train['clean_text_tok']]],min_count=1)     
 w2v = dict(zip(model.wv.index_to_key, model.wv[0])) 
 modelw = MeanEmbeddingVectorizer(w2v)
 
