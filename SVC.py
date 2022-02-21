@@ -215,3 +215,9 @@ df_test['target']= y_predict
 final=df_test[['clean_text','target']].reset_index(drop=True)
 print(final.head())
 # %%
+from pathlib import Path  
+filepath = Path('output.csv')  
+filepath.parent.mkdir(parents=True, exist_ok=True)  
+final.to_csv(filepath)
+final.to_csv(index=False)
+# %%
